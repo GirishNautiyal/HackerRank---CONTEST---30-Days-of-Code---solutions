@@ -1,0 +1,338 @@
+Program #1: Data Types
+
+##### Problem Statement #####
+
+In languages like Java data types (like the ones above) can be classified into two main 
+
+groups:
+
+Primitive Types
+Reference Types
+For this challenge, consider the following inputs (you don't need to read any input):
+
+5.35
+'a'
+false
+100
+"I am a code monkey"
+true
+17.3
+'c'
+"derp"
+For each line above, print out if it is an instance of a primitive or referenced type 
+
+as well as which data type it is (using the typical examples above).
+
+Output Format
+
+Output nine lines. Print one line for each of the input given above in the following 
+
+format:
+
+MainDataTypeOfInstance : SpecificDataTypeOfInstance
+For example, if the input is:
+
+123
+Your output should be:
+
+Primitive : int
+
+
+##### Solution ######
+
+def checker(d):
+    if type(d).__name__ == 'float':
+        return 'Primitive : double'
+    elif type(d).__name__ == 'str' and len(d) ==1:
+        return 'Primitive : char'
+    elif type(d).__name__ == 'bool':
+        return 'Primitive : boolean'
+    elif type(d).__name__ == 'int':
+        return 'Primitive : int'
+    elif type(d).__name__ == 'str':
+        return 'Referenced : String'
+
+print checker(5.35)
+print checker('a')
+print checker(False)
+print checker(100)
+print checker("I am a code monkey")
+print checker(True)
+print checker(17.3)
+print checker('c')
+print checker("derp")
+
+
+########################################################
+
+# Program #2: Simple Arithmetic Operation
+
+##### Problem Statement #####
+
+In this problem, we read as input the original price of the meal, tip percentage, and 
+
+tax percentage.
+
+Good luck!
+
+Input Format
+
+Three numbers, (M, T, and X), each on separate lines:
+
+M will be a double representing the original price of the meal.
+
+T will be a integer representing the percentage that the customer wants to tip based 
+
+off of the original price of the meal.
+
+X will be an integer representing the tax percentage that the customer has to pay based 
+
+off of the original price of the meal.
+
+Output Format
+
+A string stating...
+
+The final price of the meal is $-.
+where the final price of the meal is substituted for the dash. The price should be 
+
+rounded to the nearest integer (dollar)
+
+
+##### Solution ######
+
+import math
+m = float(raw_input().strip())
+t = float(raw_input().strip())
+x = float(raw_input().strip())
+
+fp = m + ((m*t)+(m*x))/100
+
+print "The final price of the meal is $%d."  %(round(fp))
+
+
+
+########################################################
+
+# Program #3: Simple If-Else Statements
+
+##### Problem Statement #####
+
+This problem will test your knowledge on "if-else" statements.
+
+Given an integer N as input, check the following:
+
+If N is odd, print "Weird".
+If N is even and, in between the range of 2 and 5(inclusive), print "Not Weird".
+If N is even and, in between the range of 6 and 20(inclusive), print "Weird".
+If N is even and N>20, print "Not Weird".
+We have given you partially completed code in the editor, complete it to solve the 
+
+problem.
+
+Input Format
+
+There is a single line of input: integer N.
+
+Output Format
+
+Print "Weird" if the number is weird. Otherwise, print "Not Weird". Do not print the 
+
+quotation marks.
+
+
+##### Solution ######
+
+n = int(raw_input().strip())
+if n%2!=0:
+    print 'Weird'
+elif n%2==0:
+    if 2<= n <5:
+        print 'Not Weird'
+    elif 6<= n <=20:
+        print 'Weird'
+    else:
+        print 'Not Weird'
+
+
+
+########################################################
+
+# Program #4: Logical Operators + Class vs. Instance!
+
+##### Problem Statement #####
+
+You will create a class Person and write a constructor that takes an integer, 
+
+initial_Age. In this constructor, you should check that the initial_Age is not negative 
+
+because we can't have people with negative ages.
+
+If the initial_Age is negative, set the instance's age equal to zero then print
+
+"This person is not valid, setting age to 0."
+without the quotations..
+
+Inside of this class, you will also create an instance variable called age and if 
+
+initial_Age is not negative, then you will set age to equal the value of initial_Age. 
+
+In addition, you will write an instance method, amIOld(), that prints whether people 
+
+are old or not to the console.
+
+In amIOld(), do the following things:
+
+If the age of the Person instance is less than 13, then print "You are young."
+If the age of the Person instance is equal or greater than 13, but less 18, print "You 
+
+are a teenager."
+Otherwise, print "You are old."
+In addition, create an instance function called yearPasses() that increases the age of 
+
+the person instance by one.
+
+
+##### Solution ######
+
+# Class definition -->
+public class Person {
+  
+    int age;	
+	public Person(int initial_Age) {
+  		// Add some more code to run some checks on initial_Age
+        if (initial_Age<0){
+            System.out.println("This person is not valid, setting age to 0.");
+            this.age =0;
+        }
+        else{
+        this.age = initial_Age;
+        }   
+	}
+
+	public void amIOld() {
+        if (age<13){
+            System.out.println("You are young.");
+        }
+        else if((age>=13) && (age<18)){
+            System.out.println("You are a teenager.");
+        }
+        else{
+            System.out.println("You are old.");
+        }
+  		// Do some computations in here and print out the correct statement to 
+
+the console 
+        // using System.out.println()...
+	}
+
+	public void yearPasses() {
+        age = age + 1;
+  		// Increment the age of the person in here
+	}
+
+# Inputs -->
+
+T = int(raw_input())
+for i in range(0,T):
+	age=int(raw_input())
+	p=Person(age)
+	p.amIOld()
+	for j in range(0,3):
+		p.yearPasses()
+	p.amIOld()
+	print ""
+
+########################################################
+
+# Program #5: Example of Loops
+
+##### Problem Statement #####
+
+In this problem you will test your knowledge of loops. Given three integers a, b, and 
+
+N, output the following series:
+
+a+(2**0)b,a+(2**0)b+(2**1)b,......,a+(2**0)b+(2**1)b+...+(2**(N−1))b
+Input Format
+
+The first line will contain the number of testcases T. Each of the next T lines will 
+
+have three integers, a, b, and N.
+
+Output Format
+
+Print the answer to each test case in a separate line.
+
+
+##### Solution ######
+
+# Inputs -->
+
+t = int(raw_input().strip())
+arr = []
+for i in range(t):
+    temp = map(int, raw_input().strip().split(" "))
+    arr.append(temp)
+
+# Output -->
+
+for sample in arr:
+    a=sample[0]
+    b=sample[1]
+    n=sample[2]
+    for i in range(n):
+        sum=0
+        for j in xrange(i+1):
+            sum=sum+((2**j)*b)
+        print (a + sum),
+    print ""
+
+
+
+########################################################
+
+# Program #6: Printing an array
+
+##### Problem Statement #####
+
+Your teacher has given you the task of drawing a staircase structure. Being an expert 
+
+programmer, you decided to make a program to draw it for you instead. Given the 
+
+required height, can you print a staircase as shown in the example? 
+Note: The last line has zero spaces before it.
+
+Input Format
+
+You are given an integer N depicting the height of the staircase.
+
+Output Format
+
+Print a staircase of height N that consists of # symbols and spaces as given in Sample 
+
+Output.
+
+Sample Input
+
+6
+
+Sample Output
+
+     #
+    ##
+   ###
+  ####
+ #####
+######
+
+
+##### Solution ######
+
+import sys
+n = int(raw_input().strip())
+for i in range(n):
+    str1= ' '*(n-i-1) + '#'*(i+1)
+    print str1
+
+############## The End ###################
